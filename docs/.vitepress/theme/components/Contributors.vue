@@ -37,7 +37,7 @@ const nonExistent = ref<string[]>([])
 const parsedContributors = computed(() => {
   if (!body.value || !author.value) return []
 
-  const list = [...body.value.matchAll(/(?:^|\s|[^\w@])@([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,38}[a-zA-Z0-9])?)(?!\.[a-z]{2,})\b/g)]
+  const list = [...body.value.matchAll(/@\[?([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,38}[a-zA-Z0-9])?)\]?/g)]
     .map(match => match[1].trim())
   const uncredited = author.value.includes('[bot]')
     ? notMentioned.value
